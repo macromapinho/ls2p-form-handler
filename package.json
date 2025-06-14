@@ -1,0 +1,16 @@
+{
+  "name": "ls2p-form-handler",
+  "version": "1.0.0",
+  "description": "Form handler for ls2pavocats.fr contact form",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  }
+}
