@@ -1,19 +1,23 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (req, res) => {
-  // Autorise CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  // Répond directement aux requêtes OPTIONS (préflight CORS)
+  // Handle preflight request
   if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     return res.status(200).end();
   }
 
+  // Allow only POST
   if (req.method !== 'POST') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     return res.status(405).json({ message: 'Only POST requests allowed' });
   }
+
+  // Set CORS headers for POST response
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
   const { firstName, lastName, email, subject, message } = req.body;
 
@@ -47,9 +51,9 @@ module.exports = async (req, res) => {
       `,
     });
 
-    res.status(200).json({ success: true });
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({ success: false, error: error.message });
+    return res.status(500).json({ success: false });
   }
 };
