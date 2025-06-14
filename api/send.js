@@ -1,22 +1,10 @@
 const nodemailer = require('nodemailer');
 
-module.exports = async (req, res) => {
-  // 1. Autoriser les requêtes CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  // 2. Répondre aux pré-vols (CORS preflight)
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
-  // 3. Rejeter les autres méthodes que POST
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).send({ message: 'Only POST requests allowed' });
   }
 
-  // 4. Ensuite ton code existant reste inchangé :
   const { firstName, lastName, email, subject, message } = req.body;
 
   let to = 'contact@ls2pavocats.fr';
@@ -54,4 +42,4 @@ module.exports = async (req, res) => {
     console.error('Error sending email:', error);
     res.status(500).json({ success: false });
   }
-};
+}
