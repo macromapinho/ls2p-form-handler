@@ -110,7 +110,7 @@ module.exports = async (req, res) => {
         
             <p style="margin-top: 32px; font-size: 14px; color: #111;">
               <strong>LS2P Avocats</strong><br>
-              <span style="color: #666;">Paris · International Tax & Strategic Advisory</span>
+              <span>Paris · International Tax & Strategic Advisory</span>
             </p>
 
           </div>
