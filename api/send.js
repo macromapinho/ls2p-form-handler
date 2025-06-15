@@ -39,33 +39,28 @@ module.exports = async (req, res) => {
       to,
       subject: subject,
       html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; padding: 24px; color: #111;">
-          <h2 style="font-weight: 600; font-size: 20px; margin-bottom: 16px;">📩 New Contact Form Submission</h2>
-          
-          <p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.6;">
-            You’ve received a new message from the LS2P website:
-          </p>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f9f9f9; padding: 40px;">
+          <div style="max-width: 540px; margin: 0 auto; background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 32px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);">
+            
+            <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">📩 New Contact Form Submission</h2>
+            <p style="font-size: 15px; color: #444; margin-bottom: 32px;">A new message has been submitted from the LS2P website:</p>
       
-          <table style="width: 100%; font-size: 15px; line-height: 1.5; border-spacing: 0;">
-            <tr>
-              <td style="font-weight: 500; padding: 8px 0;">Name:</td>
-              <td style="padding: 8px 0;">${firstName} ${lastName}</td>
-            </tr>
-            <tr>
-              <td style="font-weight: 500; padding: 8px 0;">Email:</td>
-              <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #0066cc;">${email}</a></td>
-            </tr>
-            <tr>
-              <td style="font-weight: 500; padding: 8px 0;">Subject:</td>
-              <td style="padding: 8px 0;">${subject}</td>
-            </tr>
-          </table>
+            <div style="display: grid; grid-template-columns: 120px 1fr; row-gap: 16px; column-gap: 24px; font-size: 15px; color: #111;">
+              <div style="font-weight: 500;">Name:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
       
-          <hr style="margin: 24px 0; border: none; border-top: 1px solid #eee;">
+              <div style="font-weight: 500;">Email:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
+                <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+              </div>
       
-          <div style="font-size: 15px; line-height: 1.6;">
-            <p style="font-weight: 500; margin-bottom: 8px;">Message:</p>
-            <p style="white-space: pre-line; margin: 0;">${message}</p>
+              <div style="font-weight: 500;">Subject:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
+      
+              <div style="font-weight: 500;">Message:</div>
+              <div style="background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div>
+            </div>
+      
           </div>
         </div>
       `
