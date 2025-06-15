@@ -69,13 +69,6 @@ module.exports = async (req, res) => {
               </div>
             </div>
         
-            <div style="margin-top: 32px;">
-              <div style="font-weight: 500; font-size: 15px; color: #111; margin-bottom: 8px;">Message:</div>
-              <div style="background: #f3f4f6; padding: 14px; border-radius: 8px; font-size: 15px; color: #111; white-space: pre-line;">
-                ${message}
-              </div>
-            </div>
-        
           </div>
         </div>
       `
