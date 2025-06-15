@@ -15,9 +15,8 @@ module.exports = async (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
 
-  const { name, firstName: fn, lastName: ln, email, subject, message, lang = 'en' } = req.body;
-  const firstName = fn || (name ? name.trim().split(' ')[0] : '');
-  const lastName = ln || (name ? name.trim().split(' ').slice(1).join(' ') : '');
+  const { name = '', email, subject, message, lang = 'en' } = req.body;
+  const [firstName = '', lastName = ''] = name.trim().split(' ');
 
   let to = 'contact@ls2pavocats.fr';
   if (subject === 'Tax Law Enquiry') {
@@ -35,12 +34,12 @@ module.exports = async (req, res) => {
   });
 
   try {
-    if (lang === 'fr') {
+    if (lang == 'fr') {
       // === VERSION FRANÇAISE ===
       await transporter.sendMail({
         from: `"Formulaire LS2P" <${process.env.MAIL_USER}>`,
         to,
-        subject: `LS2P Contact : ${subject}`,
+        subject: subject,
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f9f9f9; padding: 16px;">
             <div style="max-width: 540px; margin: 0 auto; background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 32px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);">
