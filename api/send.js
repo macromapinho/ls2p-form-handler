@@ -45,17 +45,28 @@ module.exports = async (req, res) => {
             <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">📩 New Contact Form Submission</h2>
             <p style="font-size: 15px; color: #444; margin-bottom: 32px;">A new message has been submitted from the LS2P website:</p>
         
-            <div style="display: grid; grid-template-columns: 120px 1fr; row-gap: 16px; column-gap: 24px; font-size: 15px; color: #111;">
-              <div style="font-weight: 500;">Name:</div>
-              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
-        
-              <div style="font-weight: 500;">Email:</div>
-              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
-                <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+            <div style="font-size: 15px; color: #111;">
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">Name:</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
               </div>
-        
-              <div style="font-weight: 500;">Subject:</div>
-              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">Email:</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
+                  <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+                </div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">Subject:</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">Message:</div>
+                <div style="background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div>
+              </div>
             </div>
         
             <div style="margin-top: 32px;">
@@ -86,20 +97,28 @@ module.exports = async (req, res) => {
               We typically respond within <strong>48 hours</strong>, depending on the nature of your inquiry.
             </p>
         
-            <div style="display: grid; grid-template-columns: 100px 1fr; row-gap: 16px; column-gap: 24px; font-size: 15px; color: #111; margin-bottom: 24px;">
-              <div style="font-weight: 500;">Name:</div>
-              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
-        
-              <div style="font-weight: 500;">Email:</div>
-              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
-                <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+            <div style="font-size: 15px; color: #111;">
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">Name:</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
               </div>
-        
-              <div style="font-weight: 500;">Subject:</div>
-              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
-        
-              <div style="grid-column: 1 / -1; font-weight: 500;">Message:</div>
-              <div style="grid-column: 1 / -1; background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">Email:</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
+                  <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+                </div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">Subject:</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">Message:</div>
+                <div style="background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div>
+              </div>
             </div>
         
             <p style="font-size: 14px; color: #666; line-height: 1.6;">
