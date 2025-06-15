@@ -47,6 +47,48 @@ module.exports = async (req, res) => {
       `,
     });
 
+    // ✉️ Confirmation email to sender
+    await transporter.sendMail({
+      from: `"LS2P Avocats" <${process.env.MAIL_USER}>`,
+      to: email,
+      subject: 'Confirmation – We received your message',
+      html: `
+        <p>Dear ${firstName},</p>
+    
+        <p>We confirm that your message has been received by <strong>LS2P Avocats</strong>.</p>
+    
+        <p>
+          Your request has been routed to the appropriate team and will be handled with the utmost care.
+          We usually respond within <strong>48 hours</strong>, depending on the nature of your inquiry.
+        </p>
+    
+        <hr style="margin: 24px 0;">
+    
+        <p><strong>Your submitted information:</strong></p>
+        <ul>
+          <li><strong>Name:</strong> ${firstName} ${lastName}</li>
+          <li><strong>Email:</strong> ${email}</li>
+          <li><strong>Subject:</strong> ${subject}</li>
+          <li><strong>Message:</strong><br>${message.replace(/\n/g, '<br>')}</li>
+        </ul>
+    
+        <hr style="margin: 24px 0;">
+    
+        <p style="font-size: 14px; color: #666;">
+          In accordance with the General Data Protection Regulation (GDPR), you have the right to access,
+          rectify, or delete your personal data at any time by contacting us at
+          <a href="mailto:contact@ls2pavocats.fr">contact@ls2pavocats.fr</a>. Your information will be
+          used solely to process your inquiry and will not be shared with third parties.
+        </p>
+    
+        <p style="margin-top: 24px;">
+          Best regards,<br>
+          <strong>LS2P Avocats</strong><br>
+          <span style="font-size: 14px; color: #888;">Paris · International Tax & Strategic Advisory</span>
+        </p>
+      `,
+    });
+
     res.status(200).json({ success: true });
   } catch (error) {
     console.error('Error sending email:', error);
