@@ -76,39 +76,45 @@ module.exports = async (req, res) => {
       to: email,
       subject: 'Confirmation – We received your message',
       html: `
-        <p>Dear ${firstName},</p>
-    
-        <p>We confirm that your message has been received by <strong>LS2P Avocats</strong>.</p>
-    
-        <p>
-          Your request has been routed to the appropriate team and will be handled with the utmost care.
-          We usually respond within <strong>48 hours</strong>, depending on the nature of your inquiry.
-        </p>
-    
-        <hr style="margin: 24px 0;">
-    
-        <p><strong>Your submitted information:</strong></p>
-        <ul>
-          <li><strong>Name:</strong> ${firstName} ${lastName}</li>
-          <li><strong>Email:</strong> ${email}</li>
-          <li><strong>Subject:</strong> ${subject}</li>
-          <li><strong>Message:</strong><br>${message.replace(/\n/g, '<br>')}</li>
-        </ul>
-    
-        <hr style="margin: 24px 0;">
-    
-        <p style="font-size: 14px; color: #666;">
-          In accordance with the General Data Protection Regulation (GDPR), you have the right to access,
-          rectify, or delete your personal data at any time by contacting us at
-          <a href="mailto:contact@ls2pavocats.fr">contact@ls2pavocats.fr</a>. Your information will be
-          used solely to process your inquiry and will not be shared with third parties.
-        </p>
-    
-        <p style="margin-top: 24px;">
-          Best regards,<br>
-          <strong>LS2P Avocats</strong><br>
-          <span style="font-size: 14px; color: #888;">Paris · International Tax & Strategic Advisory</span>
-        </p>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f9f9f9; padding: 40px;">
+          <div style="max-width: 540px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        
+            <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">📨 Message Received</h2>
+            <p style="font-size: 15px; color: #444; margin-bottom: 24px;">
+              Dear ${firstName},<br><br>
+              Thank you for contacting <strong>LS2P Avocats</strong>. Your message has been successfully received and routed to the appropriate team.
+              We typically respond within <strong>48 hours</strong>, depending on the nature of your inquiry.
+            </p>
+        
+            <div style="display: grid; grid-template-columns: 100px 1fr; row-gap: 16px; column-gap: 24px; font-size: 15px; color: #111; margin-bottom: 24px;">
+              <div style="font-weight: 500;">Name:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
+        
+              <div style="font-weight: 500;">Email:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
+                <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+              </div>
+        
+              <div style="font-weight: 500;">Subject:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
+        
+              <div style="grid-column: 1 / -1; font-weight: 500;">Message:</div>
+              <div style="grid-column: 1 / -1; background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div>
+            </div>
+        
+            <p style="font-size: 14px; color: #666; line-height: 1.6;">
+              In accordance with the General Data Protection Regulation (GDPR), you may access, rectify, or delete your personal data at any time by emailing us at 
+              <a href="mailto:contact@ls2pavocats.fr" style="color: #0066cc; text-decoration: none;">contact@ls2pavocats.fr</a>.
+              Your information will be used solely for the purpose of responding to your inquiry and will never be shared with third parties.
+            </p>
+        
+            <p style="margin-top: 32px; font-size: 14px; color: #888;">
+              — LS2P Avocats<br>
+              Paris · International Tax & Strategic Advisory
+            </p>
+        
+          </div>
+        </div>
       `,
     });
 
