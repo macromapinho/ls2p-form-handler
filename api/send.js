@@ -38,14 +38,37 @@ module.exports = async (req, res) => {
       from: `"LS2P Contact Form" <${process.env.MAIL_USER}>`,
       to,
       subject: subject,
-      text: `
-        New message from ${firstName} ${lastName}
-        Email: ${email}
-        Subject: ${subject}
-
-        Message:
-        ${message}
-      `,
+      html: `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; padding: 24px; color: #111;">
+          <h2 style="font-weight: 600; font-size: 20px; margin-bottom: 16px;">📩 New Contact Form Submission</h2>
+          
+          <p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.6;">
+            You’ve received a new message from the LS2P website:
+          </p>
+      
+          <table style="width: 100%; font-size: 15px; line-height: 1.5; border-spacing: 0;">
+            <tr>
+              <td style="font-weight: 500; padding: 8px 0;">Name:</td>
+              <td style="padding: 8px 0;">${firstName} ${lastName}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 500; padding: 8px 0;">Email:</td>
+              <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #0066cc;">${email}</a></td>
+            </tr>
+            <tr>
+              <td style="font-weight: 500; padding: 8px 0;">Subject:</td>
+              <td style="padding: 8px 0;">${subject}</td>
+            </tr>
+          </table>
+      
+          <hr style="margin: 24px 0; border: none; border-top: 1px solid #eee;">
+      
+          <div style="font-size: 15px; line-height: 1.6;">
+            <p style="font-weight: 500; margin-bottom: 8px;">Message:</p>
+            <p style="white-space: pre-line; margin: 0;">${message}</p>
+          </div>
+        </div>
+      `
     });
 
     // ✉️ Confirmation email to sender
