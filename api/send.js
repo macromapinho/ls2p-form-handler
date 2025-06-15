@@ -15,8 +15,8 @@ module.exports = async (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
 
-  const { name, email, subject, message, to } = req.body;
-  const [firstName, lastName] = name.split(' ');
+  const { name = '', email, subject, message, to } = req.body;
+  const [firstName = '', lastName = ''] = name.trim().split(' ');
 
   let to = 'contact@ls2pavocats.fr';
   if (subject === 'Tax Law Enquiry') {
