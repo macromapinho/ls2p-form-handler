@@ -37,7 +37,7 @@ module.exports = async (req, res) => {
     await transporter.sendMail({
       from: `"LS2P Contact Form" <${process.env.MAIL_USER}>`,
       to,
-      subject: `${subject}`,
+      subject: subject,
       text: `
         New message from ${firstName} ${lastName}
         Email: ${email}
