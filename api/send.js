@@ -39,39 +39,32 @@ module.exports = async (req, res) => {
       to,
       subject: subject,
       html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; padding: 50px;">
-          <div style="max-width: 600px; margin: auto; background: #1e1e1e; padding: 40px; border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #ffffff;">
-            <h2 style="margin-top: 0; margin-bottom: 24px; font-size: 22px;">
-              <span style="font-size: 20px;">📩</span> New Contact Form Submission
-            </h2>
-            <p style="margin-bottom: 32px; color: #ccc;">A new message has been submitted from the LS2P website:</p>
-          
-            <table style="width: 100%; border-spacing: 0 12px;">
-              <tr>
-                <td style="color: #aaa; vertical-align: top; width: 80px;">Name:</td>
-                <td style="background: #2a2a2a; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</td>
-              </tr>
-              <tr>
-                <td style="color: #aaa; vertical-align: top;">Email:</td>
-                <td style="background: #2a2a2a; padding: 10px 14px; border-radius: 8px;">
-                  <a href="mailto:${email}" style="color: #4da6ff; text-decoration: none;">${email}</a>
-                </td>
-              </tr>
-              <tr>
-                <td style="color: #aaa; vertical-align: top;">Subject:</td>
-                <td style="background: #2a2a2a; padding: 10px 14px; border-radius: 8px;">${subject}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="color: #aaa; vertical-align: top;">Message:</td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <div style="background: #2a2a2a; padding: 18px 20px; border-radius: 8px; white-space: pre-wrap; line-height: 1.6;">
-                    ${message.replace(/\n/g, '<br>')}
-                  </div>
-                </td>
-              </tr>
-            </table>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f9f9f9; padding: 40px;">
+          <div style="max-width: 540px; margin: 0 auto; background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 32px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);">
+            
+            <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">📩 New Contact Form Submission</h2>
+            <p style="font-size: 15px; color: #444; margin-bottom: 32px;">A new message has been submitted from the LS2P website:</p>
+        
+            <div style="display: grid; grid-template-columns: 120px 1fr; row-gap: 16px; column-gap: 24px; font-size: 15px; color: #111;">
+              <div style="font-weight: 500;">Name:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
+        
+              <div style="font-weight: 500;">Email:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
+                <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+              </div>
+        
+              <div style="font-weight: 500;">Subject:</div>
+              <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
+            </div>
+        
+            <div style="margin-top: 32px;">
+              <div style="font-weight: 500; font-size: 15px; color: #111; margin-bottom: 8px;">Message:</div>
+              <div style="background: #f3f4f6; padding: 14px; border-radius: 8px; font-size: 15px; color: #111; white-space: pre-line;">
+                ${message}
+              </div>
+            </div>
+        
           </div>
         </div>
       `
