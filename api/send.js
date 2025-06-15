@@ -108,11 +108,11 @@ module.exports = async (req, res) => {
               Your information will be used solely for the purpose of responding to your inquiry and will never be shared with third parties.
             </p>
         
-            <p style="margin-top: 32px; font-size: 14px; color: #888;">
-              — LS2P Avocats<br>
-              Paris · International Tax & Strategic Advisory
+            <p style="margin-top: 32px; font-size: 14px; color: #111;">
+              <strong>LS2P Avocats</strong><br>
+              <span style="color: #666;">Paris · International Tax & Strategic Advisory</span>
             </p>
-        
+
           </div>
         </div>
       `,
