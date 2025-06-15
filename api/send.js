@@ -40,36 +40,38 @@ module.exports = async (req, res) => {
       subject: subject,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; padding: 50px;">
-          <div style="max-width: 800px; margin: 0 auto; background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 36px 48px; box-shadow: 0 6px 20px rgba(0,0,0,0.04);">
-            
-            <h2 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">📩 New Contact Form Submission</h2>
-            <p style="font-size: 15px; color: #444; margin-bottom: 32px;">
-              A new message has been submitted from the LS2P website:
-            </p>
-      
-            <table style="width: 100%; border-collapse: collapse; font-size: 15px; color: #111;">
+          <div style="max-width: 600px; margin: auto; background: #1e1e1e; padding: 40px; border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #ffffff;">
+            <h2 style="margin-top: 0; margin-bottom: 24px; font-size: 22px;">
+              <span style="font-size: 20px;">📩</span> New Contact Form Submission
+            </h2>
+            <p style="margin-bottom: 32px; color: #ccc;">A new message has been submitted from the LS2P website:</p>
+          
+            <table style="width: 100%; border-spacing: 0 12px;">
               <tr>
-                <td style="font-weight: 500; padding: 12px 0; width: 120px;">Name:</td>
-                <td style="background: #f9f9f9; padding: 12px 16px; border-radius: 8px;">${firstName} ${lastName}</td>
+                <td style="color: #aaa; vertical-align: top; width: 80px;">Name:</td>
+                <td style="background: #2a2a2a; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</td>
               </tr>
               <tr>
-                <td style="font-weight: 500; padding: 12px 0;">Email:</td>
-                <td style="background: #f9f9f9; padding: 12px 16px; border-radius: 8px;">
-                  <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+                <td style="color: #aaa; vertical-align: top;">Email:</td>
+                <td style="background: #2a2a2a; padding: 10px 14px; border-radius: 8px;">
+                  <a href="mailto:${email}" style="color: #4da6ff; text-decoration: none;">${email}</a>
                 </td>
               </tr>
               <tr>
-                <td style="font-weight: 500; padding: 12px 0;">Subject:</td>
-                <td style="background: #f9f9f9; padding: 12px 16px; border-radius: 8px;">${subject}</td>
+                <td style="color: #aaa; vertical-align: top;">Subject:</td>
+                <td style="background: #2a2a2a; padding: 10px 14px; border-radius: 8px;">${subject}</td>
               </tr>
               <tr>
-                <td style="font-weight: 500; padding: 12px 0; vertical-align: top;">Message:</td>
-                <td style="background: #f9f9f9; padding: 16px 18px; border-radius: 8px; white-space: pre-line; font-size: 15px; line-height: 1.6;">
-                  ${message}
+                <td colspan="2" style="color: #aaa; vertical-align: top;">Message:</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div style="background: #2a2a2a; padding: 18px 20px; border-radius: 8px; white-space: pre-wrap; line-height: 1.6;">
+                    ${message.replace(/\n/g, '<br>')}
+                  </div>
                 </td>
               </tr>
             </table>
-      
           </div>
         </div>
       `
