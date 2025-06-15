@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
 
-  const { name = '', email, subject, message, to } = req.body;
+  const { name = '', email, subject, message } = req.body;
   const [firstName = '', lastName = ''] = name.trim().split(' ');
 
   let to = 'contact@ls2pavocats.fr';
