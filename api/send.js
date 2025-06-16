@@ -1,6 +1,15 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (req, res) => {
+    if (req.body && typeof req.body === 'string') {
+      try {
+        req.body = JSON.parse(req.body);
+      } catch (err) {
+        console.error('❌ Failed to parse JSON body:', err);
+        return res.status(400).json({ success: false, error: 'Invalid JSON' });
+      }
+    }
+  
   if (req.method === 'OPTIONS') {
     // Autoriser les requêtes cross-origin
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -15,6 +24,7 @@ module.exports = async (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
 
+  console.log('BODY:', req.body);
   const { name = '', email, subject, message, lang = 'en' } = req.body;
   const [firstName = '', lastName = ''] = name.trim().split(' ');
 
@@ -164,6 +174,6 @@ module.exports = async (req, res) => {
   
     res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('❌ Error sending email:', error.message, error);
     res.status(500).json({ success: false });
   }
