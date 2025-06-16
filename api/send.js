@@ -101,16 +101,16 @@ module.exports = async (req, res) => {
         subject: 'Confirmation – Nous avons bien reçu votre message',
         title: '📨 Votre message a bien été reçu',
         intro: `Bonjour ${firstName},<br><br>
-          Merci d'avoir contacté <strong>LS2P Avocats</strong>. Votre message a été transmis à l'équipe concernée et fera l'objet d'un traitement attentif.
+          Merci d’avoir contacté <strong>LS2P Avocats</strong>. Votre message a bien été transmis à l’équipe compétente et sera traité avec toute l’attention qu’il mérite.<br><br>
           Vous recevrez une réponse dans un délai moyen de <strong>48 heures</strong>.`,
         nameLabel: 'Nom :',
         emailLabel: 'Email :',
         subjectLabel: 'Sujet :',
         messageLabel: 'Message :',
-        gdprText: `Conformément au Règlement général sur la protection des données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. 
+        gdprText: `Conformément au Règlement général sur la protection des données (RGPD), vous disposez d’un droit d’accès, de rectification et de suppression de vos données personnelles.<br>
           Vous pouvez exercer ces droits en nous écrivant à 
           <a href="mailto:contact@ls2pavocats.fr" style="color: #0066cc; text-decoration: none;">contact@ls2pavocats.fr</a>.
-          Vos informations ne seront utilisées que pour répondre à votre demande et ne seront jamais transmises à des tiers.`,
+          Vos informations seront utilisées exclusivement pour traiter votre demande et ne seront jamais communiquées à des tiers.`,
         footer: `<strong>LS2P Avocats</strong><br>
           <span>Paris · Fiscalité internationale & stratégie juridique</span>`
       }
