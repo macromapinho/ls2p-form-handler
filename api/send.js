@@ -30,10 +30,19 @@ module.exports = async (req, res) => {
   const { name = '', email, subject, message, lang = 'en' } = req.body;
   const [firstName = '', lastName = ''] = name.trim().split(' ');
 
+  // Log the language to debug
+  console.log('📝 Form language:', lang);
+  console.log('📝 Subject:', subject);
+
   let to = 'contact@ls2pavocats.fr';
-  if (subject === 'Tax Law Enquiry') {
+  if (subject === 'Tax Law Enquiry' || subject === 'Sollicitation Fiscale') {
     to = 'tax@ls2pavocats.fr';
-  } else if (subject === 'Partnership Request' || subject === 'Press & Media') {
+  } else if (
+    subject === 'Partnership Request' || 
+    subject === 'Press & Media' || 
+    subject === 'Demande de Partenariat' || 
+    subject === 'Presse & Médias'
+  ) {
     to = 'partners@ls2pavocats.fr';
   }
 
@@ -108,8 +117,15 @@ module.exports = async (req, res) => {
     }
   };
 
-  // Select language content
-  const content = lang === 'fr' ? emailContent.fr : emailContent.en;
+  // Select language content - force to 'fr' if the form has French subjects
+  let useLang = lang;
+  if (['Sollicitation Fiscale', 'Demande de Partenariat', 'Presse & Médias', 'Prise de Contact', 'Autre'].includes(subject)) {
+    console.log('🇫🇷 Detected French subject, forcing French language');
+    useLang = 'fr';
+  }
+  
+  const content = useLang === 'fr' ? emailContent.fr : emailContent.en;
+  console.log('✉️ Using language:', useLang);
 
   try {
     // Send notification email to LS2P
@@ -125,12 +141,28 @@ module.exports = async (req, res) => {
             <p style="font-size: 15px; color: #444; margin-bottom: 32px;">${content.notification.intro}</p>
         
             <div style="font-size: 15px; color: #111;">
-              <div style="margin-bottom: 16px;"><strong>${content.notification.nameLabel}</strong><br>${firstName} ${lastName}</div>
-              <div style="margin-bottom: 16px;"><strong>${content.notification.emailLabel}</strong><br><a href="mailto:${email}" style="color: #0066cc;">${email}</a></div>
-              <div style="margin-bottom: 16px;"><strong>${content.notification.subjectLabel}</strong><br>${subject}</div>
-              <div style="margin-bottom: 16px;"><strong>${content.notification.messageLabel}</strong><br><div style="background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div></div>
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">${content.notification.nameLabel}</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">${content.notification.emailLabel}</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
+                  <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+                </div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">${content.notification.subjectLabel}</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">${content.notification.messageLabel}</div>
+                <div style="background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div>
+              </div>
             </div>
-        
           </div>
         </div>
       `
@@ -151,10 +183,27 @@ module.exports = async (req, res) => {
             </p>
         
             <div style="font-size: 15px; color: #111;">
-              <div style="margin-bottom: 16px;"><strong>${content.confirmation.nameLabel}</strong><br>${firstName} ${lastName}</div>
-              <div style="margin-bottom: 16px;"><strong>${content.confirmation.emailLabel}</strong><br><a href="mailto:${email}" style="color: #0066cc;">${email}</a></div>
-              <div style="margin-bottom: 16px;"><strong>${content.confirmation.subjectLabel}</strong><br>${subject}</div>
-              <div style="margin-bottom: 16px;"><strong>${content.confirmation.messageLabel}</strong><br><div style="background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div></div>
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">${content.confirmation.nameLabel}</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${firstName} ${lastName}</div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">${content.confirmation.emailLabel}</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">
+                  <a href="mailto:${email}" style="color: #0066cc; text-decoration: none;">${email}</a>
+                </div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">${content.confirmation.subjectLabel}</div>
+                <div style="background: #f3f4f6; padding: 10px 14px; border-radius: 8px;">${subject}</div>
+              </div>
+            
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 500; margin-bottom: 4px;">${content.confirmation.messageLabel}</div>
+                <div style="background: #f3f4f6; padding: 14px; border-radius: 8px; white-space: pre-line;">${message}</div>
+              </div>
             </div>
         
             <p style="font-size: 14px; color: #666; line-height: 1.6;">
