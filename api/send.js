@@ -9,6 +9,8 @@ module.exports = async (req, res) => {
         return res.status(400).json({ success: false, error: 'Invalid JSON' });
       }
     }
+
+    console.log('📨 Incoming body:', req.body);
   
   if (req.method === 'OPTIONS') {
     // Autoriser les requêtes cross-origin
