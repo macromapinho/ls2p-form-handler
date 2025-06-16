@@ -112,7 +112,7 @@ module.exports = async (req, res) => {
           <a href="mailto:contact@ls2pavocats.fr" style="color: #0066cc; text-decoration: none;">contact@ls2pavocats.fr</a>.
           Vos informations seront utilisées exclusivement pour traiter votre demande et ne seront jamais communiquées à des tiers.`,
         footer: `<strong>LS2P Avocats</strong><br>
-          <span>Paris · Fiscalité internationale & stratégie juridique</span>`
+          <span>Paris · Fiscalité internationale & Stratégie juridique</span>`
       }
     }
   };
