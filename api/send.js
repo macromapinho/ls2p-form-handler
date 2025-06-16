@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
   });
 
   try {
-    if (lang == 'fr') {
+    if (lang === 'fr') {
       // === VERSION FRANÇAISE ===
       await transporter.sendMail({
         from: `"Formulaire LS2P" <${process.env.MAIL_USER}>`,
@@ -109,8 +109,9 @@ module.exports = async (req, res) => {
           </div>
         `
       });
-  
-    } else {
+    
+    } 
+    else {
       // === VERSION ANGLAISE ===
       await transporter.sendMail({
         from: `"LS2P Contact Form" <${process.env.MAIL_USER}>`,
@@ -175,7 +176,10 @@ module.exports = async (req, res) => {
     }
   
     res.status(200).json({ success: true });
-  } catch (error) {
+  } 
+  
+  catch (error) {
     console.error('❌ Error sending email:', error.message, error);
     res.status(500).json({ success: false });
   }
+};
